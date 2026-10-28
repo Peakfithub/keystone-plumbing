@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Residential and commercial plumbing repair, installation and 24/7 emergency service. Request a free quote.">
+<title>Keystone Plumbing Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: spec-sheet site — a pipe run threads the hero, services read like a parts catalog, quote form is a work order */
+:root{
+  --bg:#F2F4F5; --surface:#FFFFFF; --sunk:#E6EAEC; --ink:#0F1E2A; --muted:#55636E; --line:#CBD3D8;
+  --copper:#B4602A; --copper-ink:#FFFFFF; --water:#1C6A9E; --water-soft:#DCEAF3; --hot:#C0392B; --ok:#1E7A4C;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px; --max:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C151C; --surface:#13202A; --sunk:#0A1218; --ink:#E7EEF2; --muted:#9AAAB5; --line:#273845;
+  --copper:#DA8550; --copper-ink:#1A0E06; --water:#5EA9DA; --water-soft:#14303F; --hot:#EF6B5C; --ok:#4CC08A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C151C; --surface:#13202A; --sunk:#0A1218; --ink:#E7EEF2; --muted:#9AAAB5; --line:#273845;
+  --copper:#DA8550; --copper-ink:#1A0E06; --water:#5EA9DA; --water-soft:#14303F; --hot:#EF6B5C; --ok:#4CC08A; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1;margin:0;letter-spacing:.005em}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;text-transform:uppercase}
+h3{font-size:1.45rem;font-weight:800;text-transform:uppercase}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px}
+.eyebrow{font:600 .74rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--copper)}
+.mono{font-family:var(--f-mono)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:700 .95rem/1 var(--f-body);padding:.95rem 1.3rem;border-radius:var(--r);border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-copper{background:var(--copper);color:var(--copper-ink)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-sm{padding:.6rem .9rem;font-size:.85rem}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.75rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo b{font:900 1.5rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.logo small{display:block;font:500 .62rem/1.2 var(--f-mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.nav{display:flex;gap:1.4rem;align-items:center}
+.nav a{font-weight:600;font-size:.92rem;text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.emerg-pill{font:600 .78rem/1 var(--f-mono);color:var(--hot);border:1.5px solid var(--hot);border-radius:99px;padding:.45rem .7rem;white-space:nowrap}
+@media (max-width:820px){.nav .hide-sm{display:none}}
+@media (max-width:480px){.emerg-pill{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(2.5rem,6vw,4.5rem) 0;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:end}
+@media (max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(3.2rem,9vw,6.4rem);font-weight:900;text-transform:uppercase;line-height:.88}
+.hero h1 em{font-style:normal;color:var(--water)}
+.hero-lede{font-size:1.15rem;color:var(--muted);max-width:34rem;margin-top:1.3rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
+.spec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);font-family:var(--f-mono);font-size:.82rem}
+.spec-head{padding:.8rem 1rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-size:.7rem}
+.spec dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+.spec dt,.spec dd{padding:.7rem 1rem;border-bottom:1px dashed var(--line);margin:0}
+.spec dt{color:var(--muted)}
+.spec dd{text-align:right;font-weight:600}
+.spec dl>*:nth-last-child(-n+2){border-bottom:0}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:.4rem;box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 25%,transparent)}
+.pipe{display:block;width:100%;height:120px;margin-top:2.5rem}
+.pipe .run{fill:none;stroke-width:14;stroke-linecap:round}
+.pipe .flow{fill:none;stroke-width:3;stroke-dasharray:6 18;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-48}}
+.pipe text{font:600 11px var(--f-mono);fill:var(--muted)}
+
+/* sector strip */
+.sectors{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line);background:var(--surface)}
+.sectors>div{padding:1.6rem 20px;display:flex;flex-direction:column;gap:.4rem}
+.sectors>div+div{border-left:1px solid var(--line)}
+@media (max-width:640px){.sectors{grid-template-columns:1fr}.sectors>div+div{border-left:0;border-top:1px solid var(--line)}}
+.sectors p{color:var(--muted);max-width:30rem}
+
+/* services */
+section.block{padding-block:clamp(3rem,7vw,5rem)}
+.block-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.2rem;margin-bottom:2rem}
+.block-head p{color:var(--muted);max-width:32rem;margin-top:.7rem}
+.tabs{display:inline-flex;background:var(--sunk);border-radius:var(--r);padding:4px;gap:4px}
+.tabs button{font:700 .9rem/1 var(--f-body);border:0;background:transparent;color:var(--muted);padding:.7rem 1rem;border-radius:4px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.svc{background:var(--surface);padding:1.4rem;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.svc .code{font:600 .7rem/1 var(--f-mono);color:var(--muted);letter-spacing:.08em;display:flex;justify-content:space-between}
+.svc h3{font-size:1.35rem}
+.svc p{color:var(--muted);font-size:.93rem;flex:1}
+.svc .foot{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding-top:.8rem;border-top:1px dashed var(--line)}
+.svc .range{font:600 .8rem var(--f-mono)}
+.svc .range span{display:block;font-size:.64rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:400}
+.add{font:700 .82rem/1 var(--f-body);background:transparent;border:1.5px solid var(--copper);color:var(--copper);border-radius:4px;padding:.55rem .75rem;cursor:pointer;white-space:nowrap}
+.add.on{background:var(--copper);color:var(--copper-ink)}
+
+/* process */
+.process{background:var(--ink);color:var(--bg)}
+.process h2{color:var(--bg)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.2rem;counter-reset:s}
+@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.steps{grid-template-columns:1fr}}
+.steps li{list-style:none;border-top:2px solid var(--copper);padding-top:1rem;counter-increment:s}
+.steps li::before{content:"STEP 0" counter(s);font:600 .72rem var(--f-mono);letter-spacing:.12em;color:var(--copper)}
+.steps h3{color:var(--bg);margin:.6rem 0 .4rem;font-size:1.3rem}
+.steps p{opacity:.75;font-size:.93rem}
+.steps ol{padding:0;margin:0}
+
+/* quote */
+.quote-grid{display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start}
+@media (max-width:960px){.quote-grid{grid-template-columns:1fr}}
+form{display:flex;flex-direction:column;gap:1.4rem;min-width:0}
+fieldset{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:1.4rem;margin:0;min-width:0}
+legend{font:800 1.15rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;padding:0 .5rem;margin-left:-.5rem}
+legend .mono{font-size:.7rem;color:var(--copper);margin-right:.5rem;letter-spacing:.1em}
+.hint{font-size:.85rem;color:var(--muted);margin:-.3rem 0 1rem}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.f{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.f.full{grid-column:1/-1}
+label{font-weight:600;font-size:.85rem}
+label .req{color:var(--hot)}
+input,select,textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:4px;padding:.7rem .75rem;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--water);outline:none;box-shadow:0 0 0 3px var(--water-soft)}
+textarea{min-height:96px;resize:vertical}
+.err{font-size:.8rem;color:var(--hot)}
+.choice-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.7rem}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.choice span{display:flex;flex-direction:column;gap:.2rem;border:1.5px solid var(--line);border-radius:4px;padding:.85rem;background:var(--bg);font-weight:700;font-size:.95rem;height:100%}
+.choice span small{font-weight:400;color:var(--muted);font-size:.8rem}
+.choice input:checked+span{border-color:var(--water);background:var(--water-soft)}
+.choice input:focus-visible+span{outline:3px solid var(--water);outline-offset:2px}
+.choice.urgent input:checked+span{border-color:var(--hot);background:color-mix(in srgb,var(--hot) 12%,var(--bg))}
+.svc-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.55rem}
+.svc-picks .choice span{font-size:.88rem;flex-direction:row;align-items:center;gap:.55rem;padding:.7rem}
+.svc-picks .box{flex:none;width:18px;height:18px;border:1.5px solid var(--line);border-radius:3px;display:grid;place-items:center;font-size:.75rem;color:transparent;background:var(--surface)}
+.svc-picks input:checked+span .box{background:var(--water);border-color:var(--water);color:var(--surface)}
+.detail{border:1px dashed var(--line);border-radius:4px;padding:1rem;margin-top:1rem;background:var(--bg)}
+.detail h4{margin:0 0 .8rem;font:700 .8rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--water)}
+.empty-detail{color:var(--muted);font-size:.9rem;padding:1rem;border:1px dashed var(--line);border-radius:4px;text-align:center}
+
+.ticket{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);font-family:var(--f-mono);font-size:.82rem;overflow:hidden}
+.ticket-head{background:var(--ink);color:var(--bg);padding:1rem 1.1rem;display:flex;justify-content:space-between;align-items:center}
+.ticket-head b{font:800 1.2rem var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.ticket-body{padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.7rem}
+.trow{display:flex;justify-content:space-between;gap:1rem}
+.trow span:first-child{color:var(--muted)}
+.trow span:last-child{text-align:right;font-weight:600}
+.tlines{border-top:1px dashed var(--line);padding-top:.7rem;display:flex;flex-direction:column;gap:.45rem;font-variant-numeric:tabular-nums}
+.ttotal{border-top:2px solid var(--ink);padding-top:.8rem;font-size:1rem;font-variant-numeric:tabular-nums}
+.ttotal span:last-child{color:var(--copper)}
+.tnote{font-family:var(--f-body);font-size:.78rem;color:var(--muted);line-height:1.45}
+@media (max-width:960px){.ticket{position:static}}
+
+.done{border:2px solid var(--ok);border-radius:var(--r);background:var(--surface);padding:1.6rem;display:flex;flex-direction:column;gap:1rem}
+.done pre{white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1rem;font:.8rem/1.55 var(--f-mono);margin:0;max-height:340px;overflow:auto}
+.done .row{display:flex;flex-wrap:wrap;gap:.6rem}
+
+/* area / faq / footer */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.hours{width:100%;border-collapse:collapse;font-family:var(--f-mono);font-size:.88rem;margin-top:1.2rem}
+.hours td{padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right}
+details{border-bottom:1px solid var(--line);padding-block:1rem}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--copper)}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:.6rem;font-size:.95rem}
+footer{border-top:1px solid var(--line);padding-block:2rem;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.copyable{display:inline-flex;align-items:center;gap:.5rem}
+.copyable button{font:600 .7rem var(--f-mono);border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:3px;padding:.25rem .45rem;cursor:pointer}
+img{max-width:100%}[hidden]{display:none!important}body{margin:0}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Keystone Plumbing home">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="5" fill="var(--ink)"/><path d="M9 25V13a4 4 0 0 1 4-4h12" fill="none" stroke="var(--copper)" stroke-width="4" stroke-linecap="round"/><circle cx="25" cy="9" r="3" fill="var(--water)"/></svg>
+      <span><b>Keystone</b><small>Plumbing Co. · Lic. M-40218</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="#services">Services</a>
+      <a class="hide-sm" href="#process">How it works</a>
+      <a class="hide-sm" href="#area">Service area</a>
+      <span class="emerg-pill">24/7 · (555) 014-7700</span>
+      <a class="btn btn-copper btn-sm" href="#quote" style="color:#000">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Residential &amp; commercial plumbing</p>
+        <h1 style="margin-top:.9rem">Every pipe,<br>every fixture,<br><em>done to code.</em></h1>
+        <p class="hero-lede">Repairs, installations and maintenance for homes, restaurants, offices and job sites. Licensed master plumbers, upfront pricing, and a written quote before any work starts.</p>
+        <div class="hero-cta">
+          <a class="btn btn-copper" href="#quote">Request a free quote →</a>
+          <a class="btn btn-line" href="#services">Browse services</a>
+        </div>
+      </div>
+      <div class="spec" aria-label="Company at a glance">
+        <div class="spec-head"><span>Dispatch board</span><span><i class="live"></i>Trucks out</span></div>
+        <dl>
+          <dt>Emergency response</dt><dd>Under 60 min</dd>
+          <dt>Licensing</dt><dd>Master · Backflow cert.</dd>
+          <dt>Workmanship warranty</dt><dd>2 years</dd>
+          <dt>Insured</dt><dd>$2M general liability</dd>
+          <dt>Quote turnaround</dt><dd>Same business day</dd>
+        </dl>
+      </div>
+    </div>
+    <svg class="pipe" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="run" stroke="var(--line)" d="M-10 40 H380 Q410 40 410 70 V80 Q410 100 440 100 H800 Q830 100 830 70 V60 Q830 40 860 40 H1210"/>
+      <path class="flow" stroke="var(--water)" d="M-10 40 H380 Q410 40 410 70 V80 Q410 100 440 100 H800 Q830 100 830 70 V60 Q830 40 860 40 H1210"/>
+      <text x="40" y="22">3/4" TYPE L COPPER · 60 PSI</text>
+      <text x="470" y="82">PVC SCH 40 · 1/4" PER FT SLOPE</text>
+      <text x="880" y="22">PEX-A · 4.5 GPM</text>
+    </svg>
+  </section>
+
+  <div class="sectors">
+    <div><p class="eyebrow">For homes</p><h3>Residential</h3><p>Leaks, clogs, water heaters, fixture swaps, repipes and remodel rough-ins. We wear shoe covers and clean up before we leave.</p></div>
+    <div><p class="eyebrow">For businesses</p><h3>Commercial</h3><p>Backflow certification, grease traps, hydro-jetting, tenant buildouts and maintenance contracts. After-hours work so you stay open.</p></div>
+  </div>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="block-head">
+        <div><p class="eyebrow">Service catalog</p><h2 style="margin-top:.6rem">What we fix &amp; install</h2>
+          <p>Tap <b>Add to quote</b> on anything you need. It drops straight into the quote form below with the right questions for that job.</p></div>
+        <div class="tabs" role="tablist" aria-label="Filter services">
+          <button role="tab" id="tab-all" aria-selected="true" data-f="all">All</button>
+          <button role="tab" id="tab-res" aria-selected="false" data-f="res">Residential</button>
+          <button role="tab" id="tab-com" aria-selected="false" data-f="com">Commercial</button>
+        </div>
+      </div>
+      <div class="catalog" id="catalog"></div>
+    </div>
+  </section>
+
+  <section class="block process" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 style="margin-top:.6rem">From request to finished job</h2>
+      <ol class="steps">
+        <li><h3>Send the details</h3><p>Pick your services and answer a few questions about the job. It takes about three minutes.</p></li>
+        <li><h3>Get a written quote</h3><p>A plumber reviews your request and sends a firm or ranged price the same business day.</p></li>
+        <li><h3>We do the work</h3><p>Licensed techs arrive in your window, pull permits when needed, and protect your floors.</p></li>
+        <li><h3>Inspect &amp; warranty</h3><p>We test the system, walk you through it, and back the work for two years.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="quote">
+    <div class="wrap">
+      <div class="block-head"><div><p class="eyebrow">Work order · Free estimate</p><h2 style="margin-top:.6rem">Request a quote</h2>
+        <p>Choose your property type and services. Each service adds its own questions so we can price it accurately.</p></div></div>
+
+      <div class="quote-grid">
+        <div id="formWrap">
+          <form id="qf" novalidate>
+            <fieldset>
+              <legend><span class="mono">01</span>Property type</legend>
+              <div class="choice-row">
+                <label class="choice"><input type="radio" name="sector" id="sec-res" value="res" checked><span>Residential<small>House, condo, townhome, duplex</small></span></label>
+                <label class="choice"><input type="radio" name="sector" id="sec-com" value="com"><span>Commercial<small>Retail, restaurant, office, multifamily, industrial</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="mono">02</span>Services needed</legend>
+              <p class="hint">Select all that apply. Questions for each one appear below.</p>
+              <div class="svc-picks" id="picks"></div>
+              <p class="err" id="err-svc" hidden>Pick at least one service so we know what to quote.</p>
+              <div id="details"></div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="mono">03</span>Timing</legend>
+              <div class="choice-row">
+                <label class="choice urgent"><input type="radio" name="urgency" id="u-emg" value="Emergency (now)"><span>Emergency<small>Active leak, no water, sewage backup</small></span></label>
+                <label class="choice"><input type="radio" name="urgency" id="u-48" value="Within 48 hours" checked><span>Within 48 hours<small>Needs attention soon</small></span></label>
+                <label class="choice"><input type="radio" name="urgency" id="u-wk" value="Within 2 weeks"><span>Within 2 weeks<small>Flexible scheduling</small></span></label>
+                <label class="choice"><input type="radio" name="urgency" id="u-proj" value="Planned project"><span>Planned project<small>Remodel, build-out, budgeting</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="mono">04</span>Property details</legend>
+              <div class="fgrid" id="propFields"></div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="mono">05</span>Contact &amp; location</legend>
+              <div class="fgrid">
+                <div class="f"><label for="c-name">Full name <span class="req">*</span></label><input id="c-name" autocomplete="name"></div>
+                <div class="f" id="bizWrap" hidden><label for="c-biz">Business name</label><input id="c-biz" autocomplete="organization"></div>
+                <div class="f"><label for="c-phone">Phone <span class="req">*</span></label><input id="c-phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567"></div>
+                <div class="f"><label for="c-email">Email <span class="req">*</span></label><input id="c-email" type="email" autocomplete="email"></div>
+                <div class="f full"><label for="c-addr">Service address <span class="req">*</span></label><input id="c-addr" autocomplete="street-address" placeholder="Street, city, ZIP"></div>
+                <div class="f"><label for="c-pref">Best way to reach you</label><select id="c-pref"><option>Phone call</option><option>Text message</option><option>Email</option></select></div>
+                <div class="f"><label for="c-time">Preferred arrival window</label><select id="c-time"><option>Morning (8–12)</option><option>Afternoon (12–4)</option><option>Evening (4–7)</option><option>After hours (commercial)</option><option>Any time</option></select></div>
+                <div class="f full"><label for="c-notes">Anything else we should know?</label><textarea id="c-notes" placeholder="Gate codes, pets, shut-off location, photos you can text us, how long the problem has been happening…"></textarea></div>
+              </div>
+              <p class="err" id="err-contact" hidden>Fill in your name, phone, a valid email and the service address.</p>
+            </fieldset>
+
+            <div style="display:flex;flex-wrap:wrap;gap:.8rem;align-items:center">
+              <button class="btn btn-copper" type="submit" id="submitBtn">Review my quote request →</button>
+              <span class="tnote">No charge for estimates. Diagnostic fee waived if you book the repair.</span>
+            </div>
+          </form>
+        </div>
+
+        <aside class="ticket" aria-live="polite">
+          <div class="ticket-head"><b>Estimate</b><span id="tRef">KP-—</span></div>
+          <div class="ticket-body">
+            <div class="trow"><span>Property</span><span id="tSector">Residential</span></div>
+            <div class="trow"><span>Timing</span><span id="tUrg">Within 48 hours</span></div>
+            <div class="tlines" id="tLines"><span class="tnote">Add services to see a ballpark range.</span></div>
+            <div class="trow ttotal"><span>Ballpark</span><span id="tTotal">—</span></div>
+            <p class="tnote" id="tEmg" hidden>Emergency dispatch adds a $150 after-hours trip fee.</p>
+            <p class="tnote">Typical ranges for this area. Your final price is confirmed in writing after we review the details or inspect on site.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="area" style="padding-top:0">
+    <div class="wrap two">
+      <div>
+        <p class="eyebrow">Service area &amp; hours</p>
+        <h2 style="margin-top:.6rem">Where we work</h2>
+        <p style="color:var(--muted);margin-top:.8rem;max-width:32rem">We cover the metro area and surrounding counties within a 40-mile radius of our shop. Commercial maintenance contracts are available region-wide.</p>
+        <table class="hours"><tbody>
+          <tr><td>Mon – Fri</td><td>7:00 AM – 7:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM – 4:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Emergency only</td></tr>
+          <tr><td>Emergency line</td><td>24 hours, 365 days</td></tr>
+        </tbody></table>
+        <p style="margin-top:1.2rem" class="copyable"><span class="mono" id="phoneTxt">(555) 014-7700</span><button type="button" data-copy="phoneTxt">Copy</button></p>
+      </div>
+      <div>
+        <p class="eyebrow">Common questions</p>
+        <h2 style="margin-top:.6rem">Before you call</h2>
+        <div style="margin-top:1rem">
+          <details><summary>Are your estimates really free?</summary><p>Yes. Quotes from this form are free. For on-site diagnostics there's a flat $89 fee, which we waive if you book the repair with us.</p></details>
+          <details><summary>Do you pull permits?</summary><p>We pull permits for water heater replacements, repipes, sewer work, gas lines and any job that requires one under local code, and we schedule the inspection.</p></details>
+          <details><summary>Can you work after hours for my business?</summary><p>Yes. Restaurants and retail clients often book overnight or early-morning windows so the work never interrupts service.</p></details>
+          <details><summary>What should I do during a leak?</summary><p>Shut off the main water valve (usually near the water meter or where the line enters the building), turn off the water heater, then call our emergency line.</p></details>
+          <details><summary>Do you offer financing?</summary><p>Financing is available on jobs over $1,500, including water heaters, repipes and sewer line replacements.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Keystone Plumbing Co. · Master Plumber Lic. M-40218 · Bonded &amp; insured</span>
+    <span class="mono">Residential · Commercial · 24/7 Emergency</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+/* ---- Service catalog: one source of truth for the cards, the form and the estimate.
+   range = typical [low, high] in USD; edit to match your own rates. ---- */
+const SERVICES=[
+ {id:"leak",code:"LK-01",name:"Leak detection & repair",sec:["res","com"],range:[150,900],
+  blurb:"Acoustic and thermal leak location, slab leaks, burst pipes and fitting repairs with minimal wall cutting.",
+  q:[["Where is the leak?","select",["Under a sink","Inside a wall or ceiling","Under the slab / floor","Outdoors / yard","Not sure"]],
+     ["Is there visible water damage?","select",["No","Yes, minor staining","Yes, active dripping or pooling"]],
+     ["Is the water shut off?","select",["No","Yes, at the fixture","Yes, at the main"]]]},
+ {id:"drain",code:"DR-02",name:"Drain cleaning",sec:["res","com"],range:[125,450],
+  blurb:"Kitchen, bath, floor and main line clogs cleared by cable or jetter, with a camera check on repeat problems.",
+  q:[["Which drain?","select",["Kitchen sink","Bathroom sink","Tub / shower","Toilet","Floor drain","Main line (multiple fixtures)"]],
+     ["How many drains are affected?","number",null,"1"],
+     ["Has this happened before?","select",["First time","Once or twice","It keeps coming back"]]]},
+ {id:"wh",code:"WH-03",name:"Water heater install & repair",sec:["res","com"],range:[1400,4800],
+  blurb:"Tank and tankless units, gas or electric. Repairs, replacements, expansion tanks and code upgrades.",
+  q:[["Repair or replace?","select",["Repair existing","Replace with same type","Switch to tankless","Not sure, need advice"]],
+     ["Fuel type","select",["Natural gas","Electric","Propane","Not sure"]],
+     ["Current tank size","select",["30–40 gallon","50 gallon","75+ gallon","Tankless","Not sure"]],
+     ["Age of current unit (years)","number",null,"10"]]},
+ {id:"fixture",code:"FX-04",name:"Fixture & faucet installation",sec:["res","com"],range:[180,650],
+  blurb:"Toilets, faucets, sinks, showers, tubs, dishwashers, ice makers and shut-off valves, installed and leak-tested.",
+  q:[["What are we installing?","select",["Toilet","Faucet","Sink","Shower valve / trim","Bathtub","Dishwasher / ice maker line","Other"]],
+     ["How many fixtures?","number",null,"1"],
+     ["Who supplies the fixture?","select",["I already have it","Please supply it","Need recommendations"]]]},
+ {id:"sewer",code:"SW-05",name:"Sewer line repair & replacement",sec:["res","com"],range:[2500,12000],
+  blurb:"Camera inspection, spot repairs, trenchless pipe lining and full lateral replacement to the city tap.",
+  q:[["What's happening?","select",["Slow drains throughout","Sewage backup","Sewer smell","Soggy patch in yard","Pre-purchase inspection"]],
+     ["Approximate line length (ft)","number",null,"60"],
+     ["Pipe material, if known","select",["Not sure","Clay","Cast iron","Orangeburg","PVC / ABS"]]]},
+ {id:"repipe",code:"RP-06",name:"Whole-building repipe",sec:["res","com"],range:[4500,16000],
+  blurb:"Replace failing galvanized, polybutylene or corroded copper supply lines with PEX-A or Type L copper.",
+  q:[["Current pipe material","select",["Galvanized steel","Polybutylene","Copper (pinhole leaks)","Not sure"]],
+     ["Number of bathrooms","number",null,"2"],
+     ["Number of stories","select",["1","2","3+"]],
+     ["Preferred new material","select",["PEX-A","Type L copper","Recommend for me"]]]},
+ {id:"gas",code:"GS-07",name:"Gas line installation & repair",sec:["res","com"],range:[350,2200],
+  blurb:"New runs for ranges, dryers, grills and generators, leak testing, and pressure tests for inspection.",
+  q:[["What do you need?","select",["New appliance hookup","New gas line run","Suspected gas leak","Pressure test for inspection"]],
+     ["Appliance(s)","text",null,"Range, dryer…"]]},
+ {id:"sump",code:"SP-08",name:"Sump & ejector pumps",sec:["res","com"],range:[450,1600],
+  blurb:"Sump, sewage ejector and battery backup pump installs, replacements and float switch repairs.",
+  q:[["Pump type","select",["Sump pump","Sewage ejector","Battery backup","Not sure"]],
+     ["New install or replacement?","select",["Replacement","New install","Repair"]]]},
+ {id:"water",code:"WQ-09",name:"Water filtration & softeners",sec:["res","com"],range:[600,3500],
+  blurb:"Whole-house filters, softeners, reverse osmosis systems and water testing for hardness and contaminants.",
+  q:[["System type","select",["Water softener","Whole-house filter","Reverse osmosis (drinking)","Water test first"]],
+     ["Water source","select",["City water","Private well"]]]},
+ {id:"disposal",code:"GD-10",name:"Garbage disposal",sec:["res"],range:[200,550],
+  blurb:"Jammed, leaking or dead disposals repaired or replaced, including new installs under existing sinks.",
+  q:[["What's the issue?","select",["Install a new one","Not turning on","Humming / jammed","Leaking"]],
+     ["Horsepower preference","select",["1/2 HP","3/4 HP","1 HP","Recommend for me"]]]},
+ {id:"remodel",code:"RM-11",name:"Remodel rough-in",sec:["res","com"],range:[2000,9000],
+  blurb:"Supply, drain and vent rough-in for kitchen and bath remodels, relocations and basement bathrooms.",
+  q:[["Room","select",["Kitchen","Bathroom","Basement bathroom","Laundry room","Multiple rooms"]],
+     ["Moving fixture locations?","select",["No, same layout","Yes, some","Yes, full relayout"]],
+     ["Do you have plans or drawings?","select",["Yes","Not yet"]]]},
+ {id:"backflow",code:"BF-12",name:"Backflow testing & certification",sec:["com","res"],range:[95,400],
+  blurb:"Annual RPZ and double-check valve testing, repairs and certification filed with the water utility.",
+  q:[["Number of devices","number",null,"1"],
+     ["Device size","select",["3/4\"","1\"","1-1/2\"","2\"","3\"+"]],
+     ["Test due date","date"]]},
+ {id:"grease",code:"GT-13",name:"Grease trap service",sec:["com"],range:[250,1200],
+  blurb:"Pumping, cleaning, baffle repair and new interceptor installs to keep your kitchen in compliance.",
+  q:[["Trap size (gallons)","select",["Under 50 (under-sink)","50–100","100–1,000","1,000+ (in-ground)"]],
+     ["Last serviced","select",["Within 1 month","1–3 months ago","3+ months ago","Not sure"]],
+     ["Service type","select",["Pump & clean","Repair","New install","Ongoing schedule"]]]},
+ {id:"jet",code:"HJ-14",name:"Hydro-jetting",sec:["com","res"],range:[400,1100],
+  blurb:"High-pressure water jetting up to 4,000 PSI to clear grease, scale and roots from main lines.",
+  q:[["Line size","select",["2\"","3\"","4\"","6\"+","Not sure"]],
+     ["Main problem","select",["Grease buildup","Tree roots","Scale","Recurring clogs"]]]},
+ {id:"camera",code:"CI-15",name:"Video camera inspection",sec:["com","res"],range:[200,450],
+  blurb:"Recorded pipe inspection with locate marks, so you see the problem before you pay for a dig.",
+  q:[["Reason for inspection","select",["Recurring clogs","Pre-purchase","Before remodel","Insurance claim"]],
+     ["Do you need a recorded copy?","select",["Yes","No"]]]},
+ {id:"cwh",code:"CW-16",name:"Commercial water heaters & boilers",sec:["com"],range:[4000,25000],
+  blurb:"High-capacity tank, tankless rack and boiler systems for restaurants, gyms, hotels and multifamily.",
+  q:[["Equipment","select",["Commercial tank heater","Tankless rack system","Boiler","Recirculation pump"]],
+     ["Capacity or BTU, if known","text",null,"e.g. 100 gal / 199,000 BTU"],
+     ["Repair or replace?","select",["Repair","Replace","New install"]]]},
+ {id:"restroom",code:"RR-17",name:"Commercial restrooms & ADA",sec:["com"],range:[800,6000],
+  blurb:"Flushometers, sensor faucets, urinals, ADA-compliant fixtures and multi-stall restroom upgrades.",
+  q:[["Number of restrooms","number",null,"2"],
+     ["Scope","select",["Repair existing fixtures","Replace fixtures","ADA upgrade","Full restroom renovation"]],
+     ["Fixture count (toilets + urinals + sinks)","number",null,"6"]]},
+ {id:"build",code:"NC-18",name:"New construction & tenant buildout",sec:["com"],range:[8000,60000],
+  blurb:"Underground, rough-in and finish plumbing for new builds and tenant improvements, coordinated with your GC.",
+  q:[["Project type","select",["Tenant improvement","Ground-up commercial","Multifamily","Restaurant buildout"]],
+     ["Square footage","number",null,"2500"],
+     ["Do you have stamped drawings?","select",["Yes","In progress","No"]],
+     ["Target start date","date"]]},
+ {id:"pm",code:"PM-19",name:"Preventive maintenance plan",sec:["com","res"],range:[300,2400],
+  blurb:"Scheduled inspections, drain maintenance, water heater flushes and priority dispatch at a fixed annual rate.",
+  q:[["Number of locations","number",null,"1"],
+     ["Visit frequency","select",["Annual","Semi-annual","Quarterly","Monthly"]]]},
+ {id:"emerg",code:"ER-20",name:"24/7 emergency service",sec:["res","com"],range:[250,1500],
+  blurb:"Burst pipes, sewage backups, no hot water and gas smells. A plumber dispatched day or night.",
+  q:[["Emergency type","select",["Burst pipe / flooding","Sewage backup","No water","No hot water","Gas smell (leave the building first)"]],
+     ["Is the main water shut off?","select",["Yes","No","I can't find it"]]]}
+];
+
+const PROP={
+ res:[["Home type","select",["Single-family","Condo / apartment","Townhome","Duplex / multi-unit"]],["Year built (approx.)","number",null,"1985"],["Square footage","number",null,"1800"],["Do you own the property?","select",["Yes, I own it","I rent (landlord approval needed)","Property manager"]]],
+ com:[["Business type","select",["Restaurant / food service","Retail","Office","Medical / dental","Multifamily","Industrial / warehouse","Hotel","School / church","Other"]],["Building square footage","number",null,"5000"],["Can work happen after hours?","select",["Yes, after hours preferred","Business hours only","Either"]],["Need a certificate of insurance?","select",["No","Yes"]]]
+};
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>"$"+n.toLocaleString("en-US");
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const selected=new Set();
+let sector="res";
+const ref="KP-"+(Date.now()%100000).toString().padStart(5,"0");
+$("#tRef").textContent=ref;
+
+/* ---- Catalog cards ---- */
+function renderCatalog(f){
+  $("#catalog").innerHTML=SERVICES.filter(s=>f==="all"||s.sec.includes(f)).map(s=>`
+    <article class="svc">
+      <div class="code"><span>${s.code}</span><span>${s.sec.map(x=>x==="res"?"RES":"COM").join(" · ")}</span></div>
+      <h3>${s.name}</h3><p>${s.blurb}</p>
+      <div class="foot"><div class="range"><span>Typical range</span>${fmt(s.range[0])} – ${fmt(s.range[1])}</div>
+      <button type="button" class="add${selected.has(s.id)?" on":""}" data-add="${s.id}">${selected.has(s.id)?"✓ Added":"Add to quote"}</button></div>
+    </article>`).join("");
+}
+$$(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  $$(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));renderCatalog(b.dataset.f);}));
+$("#catalog").addEventListener("click",e=>{
+  const b=e.target.closest("[data-add]");if(!b)return;
+  const s=SERVICES.find(x=>x.id===b.dataset.add);
+  if(selected.has(s.id)){selected.delete(s.id)}else{
+    selected.add(s.id);
+    if(!s.sec.includes(sector)){setSector(s.sec[0]);}
+  }
+  syncAll();
+});
+
+/* ---- Form: service picks filtered by sector ---- */
+function setSector(v){sector=v;$("#sec-"+v).checked=true;
+  [...selected].forEach(id=>{if(!SERVICES.find(s=>s.id===id).sec.includes(v))selected.delete(id)});
+  renderProp();$("#bizWrap").hidden=v!=="com";syncAll();}
+$$('input[name="sector"]').forEach(r=>r.addEventListener("change",()=>setSector(r.value)));
+
+function renderPicks(){
+  $("#picks").innerHTML=SERVICES.filter(s=>s.sec.includes(sector)).map(s=>`
+    <label class="choice"><input type="checkbox" id="pick-${s.id}" value="${s.id}" ${selected.has(s.id)?"checked":""}><span><i class="box">✓</i>${s.name}</span></label>`).join("");
+}
+$("#picks").addEventListener("change",e=>{const c=e.target;c.checked?selected.add(c.value):selected.delete(c.value);syncAll();});
+
+function field(prefix,[label,type,opts,ph]){
+  const id=prefix+"-"+slug(label);
+  let ctl;
+  if(type==="select")ctl=`<select id="${id}" data-label="${label.replace(/"/g,'&quot;')}">${opts.map(o=>`<option>${o}</option>`).join("")}</select>`;
+  else ctl=`<input id="${id}" type="${type}" data-label="${label.replace(/"/g,'&quot;')}" ${type==="number"?'min="0" inputmode="numeric"':""} ${ph?`placeholder="${ph}"`:""}>`;
+  return `<div class="f"><label for="${id}">${label}</label>${ctl}</div>`;
+}
+const keep={};
+function stash(){$$("#details [id], #propFields [id]").forEach(el=>{if("value"in el)keep[el.id]=el.value;});}
+function restore(root){$$(root+" [id]").forEach(el=>{if(keep[el.id]!==undefined)el.value=keep[el.id];});}
+
+function renderDetails(){
+  stash();
+  const list=SERVICES.filter(s=>selected.has(s.id));
+  $("#details").innerHTML=list.length?list.map(s=>`
+    <div class="detail" data-svc="${s.id}"><h4>${s.code} · ${s.name}</h4><div class="fgrid">${s.q.map(q=>field("q-"+s.id,q)).join("")}</div></div>`).join("")
+    :`<div class="empty-detail" style="margin-top:1rem">Questions for each service you pick will show up here.</div>`;
+  restore("#details");
+}
+function renderProp(){stash();$("#propFields").innerHTML=PROP[sector].map(q=>field("p-"+sector,q)).join("");restore("#propFields");}
+
+/* ---- Estimate ticket ---- */
+function renderTicket(){
+  const list=SERVICES.filter(s=>selected.has(s.id));
+  const urg=$('input[name="urgency"]:checked').value;
+  $("#tSector").textContent=sector==="res"?"Residential":"Commercial";
+  $("#tUrg").textContent=urg;
+  $("#tEmg").hidden=urg!=="Emergency (now)";
+  if(!list.length){$("#tLines").innerHTML='<span class="tnote">Add services to see a ballpark range.</span>';$("#tTotal").textContent="—";return;}
+  $("#tLines").innerHTML=list.map(s=>`<div class="trow"><span>${s.name}</span><span>${fmt(s.range[0])}–${fmt(s.range[1])}</span></div>`).join("");
+  let lo=list.reduce((a,s)=>a+s.range[0],0),hi=list.reduce((a,s)=>a+s.range[1],0);
+  if(urg==="Emergency (now)"){lo+=150;hi+=150;}
+  $("#tTotal").textContent=fmt(lo)+" – "+fmt(hi);
+}
+$$('input[name="urgency"]').forEach(r=>r.addEventListener("change",renderTicket));
+
+function syncAll(){renderPicks();renderDetails();renderTicket();
+  const active=$(".tabs [aria-selected=true]").dataset.f;renderCatalog(active);
+  if(selected.size)$("#err-svc").hidden=true;}
+
+/* ---- Submit: validate, then show a summary the customer can copy ---- */
+$("#qf").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#c-name").value.trim(),phone=$("#c-phone").value.trim(),email=$("#c-email").value.trim(),addr=$("#c-addr").value.trim();
+  const okSvc=selected.size>0, okC=name&&phone.replace(/\D/g,"").length>=10&&/^\S+@\S+\.\S+$/.test(email)&&addr;
+  $("#err-svc").hidden=okSvc;$("#err-contact").hidden=!!okC;
+  if(!okSvc){$("#picks").scrollIntoView({behavior:"smooth",block:"center"});return;}
+  if(!okC){$("#c-name").scrollIntoView({behavior:"smooth",block:"center"});return;}
+  const lines=[`KEYSTONE PLUMBING · QUOTE REQUEST ${ref}`,`Property: ${sector==="res"?"Residential":"Commercial"}`,`Timing: ${$('input[name="urgency"]:checked').value}`,""];
+  SERVICES.filter(s=>selected.has(s.id)).forEach(s=>{lines.push(`[${s.code}] ${s.name}`);
+    $$(`[data-svc="${s.id}"] [data-label]`).forEach(el=>lines.push(`  - ${el.dataset.label}: ${el.value||"—"}`));});
+  lines.push("","Property details:");$$("#propFields [data-label]").forEach(el=>lines.push(`  - ${el.dataset.label}: ${el.value||"—"}`));
+  lines.push("","Contact:",`  ${name}${$("#c-biz").value?" · "+$("#c-biz").value:""}`,`  ${phone} · ${email}`,`  ${addr}`,`  Prefers: ${$("#c-pref").value}, ${$("#c-time").value}`);
+  if($("#c-notes").value.trim())lines.push("","Notes: "+$("#c-notes").value.trim());
+  lines.push("",`Ballpark: ${$("#tTotal").textContent}`);
+  const text=lines.join("\n");
+  const done=document.createElement("div");done.className="done";done.innerHTML=`
+    <p class="eyebrow" style="color:var(--ok)">Request ${ref} ready</p>
+    <h3>Thanks, ${name.split(" ")[0].replace(/[<>&]/g,"")}. Here's your quote request.</h3>
+    <p style="color:var(--muted)">Copy this summary and text or email it to us, or call <span class="mono">(555) 014-7700</span> and give the reference number. A plumber will reply with a written quote the same business day.</p>
+    <pre id="summary"></pre>
+    <div class="row"><button class="btn btn-copper btn-sm" type="button" id="copySum">Copy summary</button><button class="btn btn-line btn-sm" type="button" id="editReq">Edit request</button></div>`;
+  done.querySelector("#summary").textContent=text;
+  $("#qf").hidden=true;$("#formWrap").appendChild(done);done.scrollIntoView({behavior:"smooth",block:"start"});
+  done.querySelector("#copySum").onclick=ev=>copy(text,ev.currentTarget,done.querySelector("#summary"));
+  done.querySelector("#editReq").onclick=()=>{done.remove();$("#qf").hidden=false;};
+});
+
+function copy(text,btn,fallbackEl){
+  const orig=btn.textContent;
+  navigator.clipboard?.writeText(text).then(()=>{btn.textContent="Copied";setTimeout(()=>btn.textContent=orig,1600)})
+   .catch(()=>{if(fallbackEl){const r=document.createRange();r.selectNodeContents(fallbackEl);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected, press copy";}});
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(b){const el=document.getElementById(b.dataset.copy);copy(el.textContent,b,el);}});
+
+renderProp();syncAll();
+})();
+</script>
+</body>
+</html>
